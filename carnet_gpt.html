@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Carnet</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        #formulario {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        canvas {
+            border: 1px solid #ccc;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="formulario">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" required>
+
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido" required>
+
+        <button onclick="generarCarnet()">Generar Carnet</button>
+    </div>
+
+    <canvas id="carnetCanvas" width="300" height="200"></canvas>
+
+    <script>
+        function generarCarnet() {
+            // Obtener los valores ingresados por el usuario
+            var nombre = document.getElementById("nombre").value;
+            var apellido = document.getElementById("apellido").value;
+
+            // Obtener el contexto del canvas
+            var canvas = document.getElementById("carnetCanvas");
+            var ctx = canvas.getContext("2d");
+
+            // Limpiar el canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Dibujar el carnet
+            ctx.fillStyle = "#ffffff";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = "#000000";
+            ctx.font = "bold 16px Arial";
+            ctx.fillText("Nombre: " + nombre, 10, 30);
+            ctx.fillText("Apellido: " + apellido, 10, 60);
+
+            // Otros elementos del carnet, como la foto, podrían agregarse aquí.
+
+            console.log("Carnet generado");
+        }
+    </script>
+</body>
+</html>
